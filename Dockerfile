@@ -1,4 +1,4 @@
-FROM amazoncorretto:8
+FROM amazoncorretto:8 as builder
 
 # set up an arg to switch the language on a whim
 ARG lang=kotlin
