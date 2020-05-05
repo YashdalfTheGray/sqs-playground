@@ -4,7 +4,7 @@ FROM amazoncorretto:8 as builder
 ARG lang=kotlin
 
 # install some dependencies
-RUN yum install -y vim wget unzip
+RUN yum install -y vim wget unzip tree
 
 # install gradle
 RUN wget -nv https://services.gradle.org/distributions/gradle-5.0-bin.zip -P /tmp && unzip -q -d /opt/gradle /tmp/gradle-*.zip
@@ -15,6 +15,7 @@ ENV PATH=${GRADLE_HOME}/bin:${PATH}
 RUN mkdir -p /usr/sqs-playground
 WORKDIR /usr/sqs-playground
 
-# initialze an empty kotlin project
-RUN gradle --no-daemon init --type ${lang}-library --dsl kotlin
-COPY build.gradle.kts /usr/sqs-playground/build.gradle.kts
+# copy over our project
+COPY . /usr/sqs-playground/
+
+# FROM amazoncorretto:8 as runner
