@@ -18,7 +18,7 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    implementation(platform("software.amazon.awssdk:bom:2.X.X"))
+    implementation(platform("software.amazon.awssdk:bom:2.13.9"))
 
     implementation("software.amazon.awssdk:sqs")
 }
