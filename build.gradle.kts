@@ -23,6 +23,10 @@ dependencies {
     implementation("software.amazon.awssdk:sqs")
 }
 
+sourceSets.main {
+    java.srcDirs("src")
+}
+
 val jar by tasks.getting(Jar::class) {
     manifest {
         attributes["Main-Class"] = "com.yashdalfthegray.sqsplayground.MainKt"
