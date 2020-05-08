@@ -9,8 +9,12 @@ buildscript {
 }
 
 plugins {
+    application
     kotlin("jvm") version "1.3.72"
-    id("com.github.johnrengelman.shadow") version "5.2.0"
+}
+
+application {
+    mainClass.set("com.yashdalfthegray.sqsplayground.MainKt")
 }
 
 repositories {
