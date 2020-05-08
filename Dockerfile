@@ -18,4 +18,6 @@ WORKDIR /usr/sqs-playground
 # copy over our project
 COPY . /usr/sqs-playground/
 
+RUN gradle clean build
+
 # FROM amazoncorretto:8 as runner
