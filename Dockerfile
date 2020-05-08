@@ -7,8 +7,8 @@ ARG lang=kotlin
 RUN yum install -y vim wget unzip tree
 
 # install gradle
-RUN wget -nv https://services.gradle.org/distributions/gradle-5.0-bin.zip -P /tmp && unzip -q -d /opt/gradle /tmp/gradle-*.zip
-ENV GRADLE_HOME=/opt/gradle/gradle-5.0
+RUN wget -nv https://services.gradle.org/distributions/gradle-6.4-bin.zip -P /tmp && unzip -q -d /opt/gradle /tmp/gradle-*.zip
+ENV GRADLE_HOME=/opt/gradle/gradle-6.4
 ENV PATH=${GRADLE_HOME}/bin:${PATH}
 
 # set up the app workspace
