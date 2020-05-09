@@ -1,4 +1,4 @@
-FROM amazoncorretto:8 as builder
+FROM amazoncorretto:11 as builder
 
 # set up an arg to switch the language on a whim
 ARG lang=kotlin
@@ -18,6 +18,11 @@ WORKDIR /usr/sqs-playground
 # copy over our project
 COPY . /usr/sqs-playground/
 
-RUN gradle clean build
+# RUN gradle clean build
 
-# FROM amazoncorretto:8 as runner
+# FROM amazoncorretto:11 as runner
+
+# COPY --from=builder /usr/sqs-playground/build/libs/sqs-playground-all.jar /bin/sqs-playground.jar
+# WORKDIR /bin
+
+# CMD ["java", "-jar", "sqs-playground.jar"]
