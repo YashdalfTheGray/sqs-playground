@@ -1,5 +1,4 @@
-// import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-
+// include the kotlin gradle plugin as a build dependency
 buildscript {
     repositories {
         mavenCentral()
@@ -10,29 +9,13 @@ buildscript {
     }
 }
 
+// tell gradle where to find dependency jars from
 repositories {
     mavenCentral()
 }
 
-plugins {
-    application
-    kotlin("jvm") version "1.3.72"
-    // id("com.github.johnrengelman.shadow") version "5.2.0"
-    // Need a resolution to https://github.com/johnrengelman/shadow/issues/336
-    // before we can add Shadow back into the build
-}
-
-application {
-    mainClass.set("com.yashdalfthegray.sqsplayground.MainKt")
-}
-
-// tasks {
-//     named<ShadowJar>("shadowJar") {
-//         mainClass.set("com.yashdalfthegray.sqsplayground.MainKt")
-//         minimize()
-//    }
-// }
-
+// add the kotlin sdtlib, aws-sdk, and specifically the sqs parts
+// of the aws-sdk
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(platform("software.amazon.awssdk:bom:2.13.9"))
@@ -40,16 +23,33 @@ dependencies {
     implementation("software.amazon.awssdk:sqs")
 }
 
+// add (or enable) the kotlin-jvm target plugin as well as
+// an executable script creator plugin
+plugins {
+    application
+    kotlin("jvm") version "1.3.72"
+}
+
+// since we aren't following the default src/main/kotlin path
+// for the kotlin files, we have to tell gradle where to find them
 sourceSets.main {
     java.srcDirs("src")
 }
 
+// application plugin needs to find our main class
+application {
+    mainClass.set("com.yashdalfthegray.sqsplayground.MainKt")
+}
+
+// each task that builds a jar needs to know what the main class is
 val jar by tasks.getting(Jar::class) {
     manifest {
-        attributes["Main-Class"] = "com.yashdalfthegray.sqsplayground.MainKt"
+        attributes("Main-Class" to "com.yashdalfthegray.sqsplayground.MainKt")
     }
 }
 
+// create a "fatjar" task so that we can package up everything into a
+// single file, and then use any java runtime to run it
 tasks {
   register("fatjar", Jar::class.java) {
     archiveClassifier.set("all")
