@@ -1,4 +1,5 @@
 // import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
     repositories {
@@ -48,4 +49,8 @@ val jar by tasks.getting(Jar::class) {
     manifest {
         attributes["Main-Class"] = "com.yashdalfthegray.sqsplayground.MainKt"
     }
+
+    from(configurations.runtimeClasspath.get().map({
+        if (it.isDirectory) it else zipTree(it)
+    }))
 }
