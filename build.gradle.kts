@@ -11,6 +11,10 @@ buildscript {
     }
 }
 
+repositories {
+    mavenCentral()
+}
+
 plugins {
     application
     kotlin("jvm") version "1.3.72"
@@ -29,10 +33,6 @@ application {
 //         minimize()
 //    }
 // }
-
-repositories {
-    mavenCentral()
-}
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
