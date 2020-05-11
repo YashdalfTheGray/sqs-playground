@@ -63,12 +63,15 @@ tasks {
         configurations
             .runtimeClasspath
             .get()
-            .onEach { println("add from dependencies: ${it.name}") }
+            .onEach { logger.info("[info] fatjar - add from dependencies: ${it.name}") }
             .map { if (it.isDirectory) it else zipTree(it) }
     )
 
     val sourcesMain = sourceSets.main.get()
-    sourcesMain.allSource.forEach { println("add from sources: ${it.name}") }
+    sourcesMain
+        .allSource
+        .forEach { logger.info("[info] fatjar - add from sources: ${it.name}") }
+
     from(sourcesMain.output)
   }
 }
