@@ -18,11 +18,11 @@ WORKDIR /usr/sqs-playground
 # copy over our project
 COPY . /usr/sqs-playground/
 
-# RUN gradle clean build
+RUN gradle clean build && gradle fatjar
 
-# FROM amazoncorretto:11 as runner
+FROM amazoncorretto:11 as runner
 
-# COPY --from=builder /usr/sqs-playground/build/libs/sqs-playground-all.jar /bin/sqs-playground.jar
-# WORKDIR /bin
+COPY --from=builder /usr/sqs-playground/build/libs/sqs-playground-all.jar /bin/sqs-playground.jar
+WORKDIR /bin
 
-# CMD ["java", "-jar", "sqs-playground.jar"]
+CMD ["java", "-jar", "sqs-playground.jar"]
