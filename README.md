@@ -8,11 +8,13 @@ There are two ways to build (and run) this project - you can do it on your compu
 
 ### Building
 
-With Docker, you can just build the container with `docker build -t sqs-playground .`.
+With Docker, you can just build the container with `docker build -t sqs-playground .`. This build uses the Docker builder pattern. We build the code in a separate container and we run it in a separate container.
+
+The advantage being that the builder container can be thrown away once a binary has been compiled for the runner container to use. And we don't need to drag all the build tooling into the runtime container.
 
 ### Running
 
-Then running the container is as simple as `docker run -it --rm --name sqs-test sqs-playground:latest`
+Then running the container is as simple as `docker run -it --rm --name sqs-test sqs-playground:latest`. This will run a fully built jar of your code in a runner container.
 
 ## The way of the host
 
