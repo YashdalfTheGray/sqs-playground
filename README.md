@@ -20,6 +20,6 @@ Then running the container is as simple as `docker run -it --rm --name sqs-test 
 
 You can, of course, build and run this project on your computer if you so choose. The project uses gradle so running a `gradle clean build` and then a `gradle run` will not only build the project and get everything set up but also run it for you as an application.
 
-### ShadowJar
+### `fatjar`
 
-The ability to create what's called a "fat jar" (a jar with all the dependencies packaged in) is still coming. There is an issue that the ShadowJar library is having with the latest version of Gradle. Once that is resolved, then we shall have ourselves a "fat jar" to run just through Java.
+This project has the ability to zip up everything that it needs to run into a single jar that can be executed using the `java -jar <path_to_singular_jar>` command. You can create this "fatjar" (as it's called in the java world) by running `gradle fatjar`. A `gradle clean build` before the `fatjar` command is recommended, although not entirely required.
