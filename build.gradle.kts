@@ -75,3 +75,8 @@ tasks {
     from(sourcesMain.output)
   }
 }
+
+// tell the wrapper to always only pull down the binaries when generated
+tasks.named<Wrapper>("wrapper") {
+    distributionType = Wrapper.DistributionType.BIN
+}
