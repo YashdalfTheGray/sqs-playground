@@ -21,6 +21,7 @@ dependencies {
     implementation(platform("software.amazon.awssdk:bom:2.13.9"))
 
     implementation("software.amazon.awssdk:sqs")
+    implementation("io.github.cdimascio:java-dotenv:5.1.4")
 }
 
 // add (or enable) the kotlin-jvm target plugin as well as
