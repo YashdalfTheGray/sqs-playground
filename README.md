@@ -4,6 +4,14 @@ A project just to allow me to mess around with SQS queue types, and also learn s
 
 There are two ways to build (and run) this project - you can do it on your computer or you can do it inside a docker container. We'll go over both below, starting with the Docker way because you don't have to install anything for the docker way.
 
+As with any project that uses AWS, you're going to want to give the AWS SDK some credentials to work with. This project does it through environment variables because it has to run under Docker. So create a new file in the root of the project called `.env` and put these three keys in it.
+
+```
+AWS_ACCESS_KEY_ID=<access_key_id>
+AWS_SECRET_ACCESS_KEY=<secret_access_key>
+AWS_DEFAULT_REGION=<valid_aws_region_name>
+```
+
 ## The way of the container
 
 ### Building
