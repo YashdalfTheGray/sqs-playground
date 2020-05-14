@@ -2,7 +2,7 @@ package com.yashdalfthegray.sqsplayground.config
 
 import io.github.cdimascio.dotenv.dotenv
 
-object Credentials {
+object Env {
   private val dotenv = dotenv {
     ignoreIfMalformed = false
     ignoreIfMissing = false
