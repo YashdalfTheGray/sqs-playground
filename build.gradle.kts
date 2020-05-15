@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
+
 // include the kotlin gradle plugin as a build dependency
 buildscript {
     repositories {
@@ -22,6 +24,14 @@ dependencies {
 
     implementation("software.amazon.awssdk:sqs")
     implementation("io.github.cdimascio:java-dotenv:5.1.4")
+}
+
+// tell Kotlin to use aim for a higher JVM target than 1.6 (which seems
+// to be the default) so we can call static methods on interfaces
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
 }
 
 // add (or enable) the kotlin-jvm target plugin as well as
