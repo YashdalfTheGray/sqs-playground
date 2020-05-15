@@ -22,7 +22,7 @@ The advantage being that the builder container can be thrown away once a binary 
 
 ### Running
 
-Then running the container is as simple as `docker run -it --rm --name sqs-test sqs-playground:latest`. This will run a fully built jar of your code in a runner container.
+Then running the container is as simple as `docker run --env-file <path_to_env_file> -it --rm --name sqs-test sqs-playground:latest`. This will run a fully built jar of your code in a runner container.
 
 ## The way of the host
 
