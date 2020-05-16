@@ -10,6 +10,8 @@ As with any project that uses AWS, you're going to want to give the AWS SDK some
 AWS_ACCESS_KEY_ID=<access_key_id>
 AWS_SECRET_ACCESS_KEY=<secret_access_key>
 AWS_DEFAULT_REGION=<valid_aws_region_name>
+SQS_QUEUE_NAME=<sqs_queue_name>
+MODE={PRODUCER|CONSUMER}
 ```
 
 ## The way of the container
