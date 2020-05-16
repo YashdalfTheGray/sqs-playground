@@ -16,4 +16,13 @@ object Env {
 
     val awsDefaultRegion: String?
         get() = this.dotenv["AWS_DEFAULT_REGION"]
+
+    val sqsQueueName: String?
+        get() = this.dotenv["SQS_QUEUE_NAME"]
+
+    val isProducer: Boolean
+        get() = this.dotenv["MODE"] == "PRODUCER"
+
+    val isConsumer: Boolean
+        get() = this.dotenv["MODE"] == "CONSUMER"
 }
