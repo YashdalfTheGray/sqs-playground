@@ -4,7 +4,7 @@ A project just to allow me to mess around with SQS queue types, and also learn s
 
 There are two ways to build (and run) this project - you can do it on your computer or you can do it inside a docker container. We'll go over both below, starting with the Docker way because you don't have to install anything for the docker way.
 
-As with any project that uses AWS, you're going to want to give the AWS SDK some credentials to work with. This project does it through environment variables because it has to run under Docker. So create a new file in the root of the project called `.env` and put these three keys in it.
+As with any project that uses AWS, you're going to want to give the AWS SDK some credentials to work with. This project does it through environment variables because it has to run under Docker. So create a new file in the root of the project called `.env` and put these five keys in it.
 
 ```
 AWS_ACCESS_KEY_ID=<access_key_id>
@@ -13,6 +13,8 @@ AWS_DEFAULT_REGION=<valid_aws_region_name>
 SQS_QUEUE_NAME=<sqs_queue_name>
 MODE={PRODUCER|CONSUMER}
 ```
+
+Most of them are fairly self-explanatory. As a note, the role associated with the access key ID and secret access key should have permissions to create/delete SQS queues and send and receive messages from it. The `MODE` environment variable is more interesting, in the sense that it controls whether this project produces data to put on the queue or reads data that has already been put on the queue.
 
 ## The way of the container
 
